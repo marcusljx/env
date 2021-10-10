@@ -1,19 +1,20 @@
 #!/bin/bash
 
-APT_PACKAGES="
-  git\
-  go\
-  tilix\
-  vim\
+APT_PACKAGES=(
+  git
+  go
+  golang-golang-x-tools
+  tilix
+  vim
   zsh
-"
+)
 
-echo Installing apt packages: ${PACKAGES}
+echo Installing apt packages: ${PACKAGES[*]}
 
 # apts
-sudo apt update -yy && sudo apt upgrade -yy
-sudo apt install ${PACKAGES} -yy -q
-sudo apt autoremove -yy
+sudo apt update -yy -qq && sudo apt upgrade -yy -qq
+sudo apt install ${PACKAGES[*]} -yy -q
+sudo apt autoremove -yy -qq
 
 SNAP_PACKAGES=(
   curl
